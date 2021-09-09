@@ -2,7 +2,7 @@
   <div id="app">
   <Header />
   <main>
-    <Gallery/>
+    <Gallery @:childToParent="getGenreFromChild"/>
   </main>
   </div>
 </template>
@@ -14,13 +14,18 @@ export default {
   name: 'App',
   data(){
     return{
-      selectFilterd:'',
+     genres:[],
     }
   },
   components: {
    Header,
    Gallery,
-  }
+  },
+  methods:{
+    getGenreFromChild(arr){
+      this.genres=arr;
+    }
+  },
 }
 </script>
 

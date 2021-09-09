@@ -6,9 +6,10 @@
       </div>
       <div class="col-2">
         
-        <select class="form-select" aria-label="Cerca..." >
-          <option selected value="">Selziona tutti i generi</option>
-          <option value=""></option>
+        <select class="form-select" v-model="currentGenre" >
+          <option value="">Selziona tutti i generi</option>
+          <option v-for="(genre,index) in genres" :key="index" :value="genre">{{genre}}</option>
+        
          
         </select>
       </div>
@@ -19,6 +20,11 @@
 <script>
 export default {
   name: "Header",
+  data(){
+      return{
+          currentGenre:'',
+      }
+  }
 };
 </script>
 

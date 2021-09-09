@@ -4,8 +4,7 @@
       <div
         class="col-12 col-sm-6 col-md-4 col-lg-3"
         v-for="album in albums"
-        :key="album.id"
-      >
+        :key="album.id" >
         <CardAlbums :album="album" />
       </div>
     </div>
@@ -13,44 +12,46 @@
 </template>
 
 <script>
-import axios from 'axios';
-import CardAlbums from './CardAlbums.vue';
+import axios from "axios";
+import CardAlbums from "./CardAlbums.vue";
 export default {
- name:'Gallery',
- data(){
-    return{
-        albums:[],
-        genres: [],
-    }
- },
- components:{
-     CardAlbums,
- },
- methods:{
-      filterByYear() {
-      return (this.albums.sort((a, b) => parseInt(a.year) - parseInt(b.year)));
+  name: "Gallery",
+  data() {
+    return {
+      albums: [],
+      genres: [],
+    };
+  },
+  components: {
+    CardAlbums,
+  },
+  methods: {
+    filterByYear() {
+      return this.albums.sort((a, b) => parseInt(a.year) - parseInt(b.year));
     },
     filterAlbums() {
       //recuperare i generi
-      this.albums.forEach(el => {
-        if(!this.genres.includes(el.genre)){
+      this.albums.forEach((el) => {
+        if (!this.genres.includes(el.genre)) {
           this.genres.push(el.genre);
         }
       });
- }
- },
- created(){
-     axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((res)=>{
-         this.albums=res.data.response;
-         this.filterByYear();
-         this.filterAlbums();
-         
-     }).catch((e)=>{
-         console.error(e);
-     });
- },
+    },
  
-}
+  },
+  created() {
+    axios
+      .get("https://flynn.boolean.careers/exercises/api/array/music")
+      .then((res) => {
+        this.albums = res.data.response;
+        this.filterByYear();
+        this.filterAlbums();
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  },
+};
 </script>
 
 <style lang="scss">
