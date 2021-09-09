@@ -29,7 +29,7 @@ header {
   height: 90px;
   width: 100%;
   background-color: $secondary-color;
-  box-shadow:  0px  0px 10px rgba(#1ed760,0.4);
+  box-shadow:  0px  0px 10px rgba($green-spotify,0.4);
 
   position: fixed;
   top: 0;
