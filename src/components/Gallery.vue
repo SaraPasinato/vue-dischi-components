@@ -21,9 +21,16 @@ export default {
  components:{
      CardAlbums,
  },
+ methods:{
+      filterByYear() {
+      return (this.albums.sort((a, b) => parseInt(a.year) - parseInt(b.year)));
+    },
+ },
  created(){
      axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((res)=>{
          this.albums=res.data.response;
+         this.filterByYear();
+         
      }).catch((e)=>{
          console.error(e);
      });

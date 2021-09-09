@@ -2,15 +2,14 @@
   <header class="">
     <div class="my-container row justify-content-between align-items-center">
       <div class="col-10">
-        <img src="../assets/img/logo.png" alt="" class="" />
+        <img src="../assets/img/logo.png" alt="logo"  />
       </div>
       <div class="col-2">
           <!--TODO: inserire i campi -->
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select class="form-select" aria-label="Cerca...">
+          <option selected value="">Selziona tutti i generi</option>
+          <option value=""></option>
+         
         </select>
       </div>
     </div>
