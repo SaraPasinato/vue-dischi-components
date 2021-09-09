@@ -1,10 +1,14 @@
 <template>
   <section id="gallery" class="container-sm">
-      <div class="row align-items-center justify-content-center pt-2 g-5">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3 " v-for="album in albums" :key="album.id">
-          <CardAlbums :album="album"/>
-          </div>
+    <div class="row align-items-center justify-content-center pt-2 g-5">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3"
+        v-for="album in albums"
+        :key="album.id"
+      >
+        <CardAlbums :album="album" />
       </div>
+    </div>
   </section>
 </template>
 
@@ -16,6 +20,7 @@ export default {
  data(){
     return{
         albums:[],
+        genres: [],
     }
  },
  components:{
@@ -25,25 +30,35 @@ export default {
       filterByYear() {
       return (this.albums.sort((a, b) => parseInt(a.year) - parseInt(b.year)));
     },
+    filterAlbums() {
+      //recuperare i generi
+      this.albums.forEach(el => {
+        if(!this.genres.includes(el.genre)){
+          this.genres.push(el.genre);
+        }
+      });
+ }
  },
  created(){
      axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((res)=>{
          this.albums=res.data.response;
          this.filterByYear();
+         this.filterAlbums();
          
      }).catch((e)=>{
          console.error(e);
      });
  },
+ 
 }
 </script>
 
 <style lang="scss">
-#gallery{
-   margin-top:60px;
-   margin-bottom:60px;
-    .row{
-        height: 100%;   
-    }
+#gallery {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  .row {
+    height: 100%;
+  }
 }
 </style>

@@ -5,8 +5,8 @@
         <img src="../assets/img/logo.png" alt="logo"  />
       </div>
       <div class="col-2">
-          <!--TODO: inserire i campi -->
-        <select class="form-select" aria-label="Cerca...">
+        
+        <select class="form-select" aria-label="Cerca..." >
           <option selected value="">Selziona tutti i generi</option>
           <option value=""></option>
          

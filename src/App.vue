@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <Header/>
+  <Header />
   <main>
     <Gallery/>
   </main>
@@ -12,6 +12,11 @@
   import Gallery from './components/Gallery.vue';
 export default {
   name: 'App',
+  data(){
+    return{
+      selectFilterd:'',
+    }
+  },
   components: {
    Header,
    Gallery,
