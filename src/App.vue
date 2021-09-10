@@ -2,7 +2,7 @@
   <div id="app">
   <Header :genres="genres" @toParent="setcurrentGenre"/>
   <main>
-    <Gallery :albums="albums"/>
+    <Gallery :albums="filterByGenre"/>
   </main>
   </div>
 </template>
@@ -53,6 +53,13 @@ export default {
       .catch((e) => {
         console.error(e);
       });
+  },
+  computed:{
+    filterByGenre(){
+       return this.albums.filter((album) => {
+        return (album.genre.toLowerCase().includes(this.currentGenre.toLowerCase()));
+      });
+    }
   },
 }
 </script>
