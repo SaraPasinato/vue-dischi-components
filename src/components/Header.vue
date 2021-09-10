@@ -6,7 +6,7 @@
       </div>
       <div class="col-2">
         
-        <select class="form-select" v-model="currentGenre" >
+        <select class="form-select" v-model="currentGenre" @click="getcurrentGenre">
           <option value="">Selziona tutti i generi</option>
           <option v-for="(genre,index) in genres" :key="index" :value="genre">{{genre}}</option>
         
@@ -25,7 +25,12 @@ export default {
       return{
           currentGenre:'',
       }
-  }
+  },
+  methods:{
+      getcurrentGenre(){
+        this.$emit('toParent',this.currentGenre);
+      }
+  },
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <Header :genres="genres"/>
+  <Header :genres="genres" @toParent="setcurrentGenre"/>
   <main>
     <Gallery :albums="albums"/>
   </main>
@@ -18,6 +18,7 @@ export default {
     return{
      albums: [],
      genres:[],
+     currentGenre:'',
     }
   },
   components: {
@@ -28,7 +29,7 @@ export default {
      filterByYear() {
       return this.albums.sort((a, b) => parseInt(a.year) - parseInt(b.year));
     },
-    filterAlbums() {
+    filterGenres() {
       //recuperare i generi
       this.albums.forEach((el) => {
         if (!this.genres.includes(el.genre)) {
@@ -36,6 +37,9 @@ export default {
         }
       });
     },
+   setcurrentGenre(str){
+     this.currentGenre=str;
+   }
   },
    created() {
     axios
@@ -43,7 +47,7 @@ export default {
       .then((res) => {
         this.albums = res.data.response;
         this.filterByYear();
-        this.filterAlbums();
+        this.filterGenres();
        
       })
       .catch((e) => {
