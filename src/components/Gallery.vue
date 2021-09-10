@@ -12,45 +12,22 @@
 </template>
 
 <script>
-import axios from "axios";
 import CardAlbums from "./CardAlbums.vue";
 export default {
   name: "Gallery",
+  props:['albums'],
   data() {
     return {
-      albums: [],
-      genres: [],
+     
     };
   },
   components: {
     CardAlbums,
   },
   methods: {
-    filterByYear() {
-      return this.albums.sort((a, b) => parseInt(a.year) - parseInt(b.year));
-    },
-    filterAlbums() {
-      //recuperare i generi
-      this.albums.forEach((el) => {
-        if (!this.genres.includes(el.genre)) {
-          this.genres.push(el.genre);
-        }
-      });
-    },
+   
+  },
  
-  },
-  created() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((res) => {
-        this.albums = res.data.response;
-        this.filterByYear();
-        this.filterAlbums();
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  },
 };
 </script>
 

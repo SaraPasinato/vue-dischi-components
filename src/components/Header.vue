@@ -20,6 +20,7 @@
 <script>
 export default {
   name: "Header",
+  props:['genres'],
   data(){
       return{
           currentGenre:'',
